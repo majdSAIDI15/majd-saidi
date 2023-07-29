@@ -1,0 +1,214 @@
+body{overflow-x: hidden;}
+*{font-family: Arial, Helvetica, sans-serif;}
+div.contenu{overflow: hidden;}
+body{margin: 0;}
+img.profil{border-radius: 50% ;
+    border: solid white 3px;
+    }
+a.botton{
+    color: orangered;
+    background-color: rgba(0, 0, 0, 0.538);
+    border: solid orangered 3px;
+    padding-top:  0.5vw ;
+    padding-left:5px ;
+    padding-right: 5px;
+    padding-bottom:0.5vw ;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    box-shadow:  2px 2px 10px 1px rgb(0, 0, 0);
+    position: absolute;
+    display: block;
+    right:42%; 
+    left: 42%;          
+    top :80%;
+    
+    z-index: 2;
+    text-align: center;
+    font-size: 1.2vw;
+    white-space: nowrap;}
+a:hover{background-color: orangered;
+        color:white}
+div.triangle-up{
+            height: 0;
+            width: 0;
+            
+            background-color: transparent;
+            border-top: 7vw solid transparent;
+            border-bottom: 0px solid transparent;
+            border-left:0px solid transparent;
+            border-right: 100vw solid rgba(128, 128, 128, 0.303);
+            position: absolute;
+            display: block;
+            
+            left: 0;
+            margin: 0;
+            right: 0;
+            z-index: 1;
+            }
+div.triangle-down{
+            height: 0;
+            width: 0;
+            
+            background-color: transparent;
+            border-top: 50px solid rgba(128, 128, 128, 0.303);
+            border-bottom:  0px solid green;
+            border-left:0px solid blue;
+            border-right: 28vw solid transparent;
+            position: absolute;top: 100%;
+            left: 0px;
+                    
+                  
+                    margin-top: 0;
+                    margin-bottom: 0;}  
+div.cover{position: relative;
+         width: screen;
+         padding: 0;
+         overflow: hidden;
+        }      
+div.cover img.back{ width: 100%;height:40vw;
+                display: block;
+                object-fit: cover
+                }
+            
+div.cover div.coord {position: absolute;top: 0;height: 7%;width: 25vw;
+                    background-color:rgba(128, 128, 128, 0.303);
+                    padding: 1.5vw;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    display: block;
+                    left: 0;
+                    }
+div.lign{background-color: orangered;
+        display: inline-block;
+        position: absolute;left: 0;
+        width:10px;height:50px;
+        margin-left: 20px;
+        }
+div.coord a{margin-left: 30px;
+            margin-top: 5px;
+            font-size: 1vw;}
+@media (max-width: 720px){
+    div.coord a{margin-left: 30px;
+            margin-top: 5px;
+            font-size: 10PX;}
+    
+}
+img.profil{position: absolute;
+                    display: block;
+                    top: 10%;
+                    right: 42%;
+                    left: 42%;
+                    width: 16%;
+                    ;}
+h1{position: absolute;
+    display: block;
+    right: 30%;
+    left: 30%;
+    width: 40%;
+    top :45%;
+    text-align: center;
+    font-size: 5vw;
+    color: aliceblue;
+    }
+p.stit{position: absolute;
+    display: block;
+    width: 100%;
+    top :65%;
+    text-align: center;
+    
+    color: gray;}
+.lign2{
+    background-color: rgba(128, 128, 128, 0.303);
+    height: 5vw;
+}
+.lign2 div{background-color: gray;
+            width: 20%;
+            height: 3px;
+            right: 40%;
+            left: 40%;
+            top:50%;
+            position: relative;
+            margin: 0;}
+p.txt{text-align: center;
+        background-color: rgba(128, 128, 128, 0.303);
+        margin: 0;
+        padding-top: 1.5vw;
+        font-size: 2.5vw;
+        position: relative;
+        color: rgb(65, 65, 65);}
+        
+        div.triangle-down2{
+            height: 0;
+            width: 0;
+            
+            background-color: transparent;
+            border-top: 7vw solid rgba(128, 128, 128, 0.303);
+            border-bottom:  0px solid green;
+            border-left:0px solid blue;
+            border-right:100vw solid transparent;
+            position: absolute;top: 100%;
+            left: 0px;
+                    
+                  
+                    margin-top: 0;
+                    margin-bottom: 0;}  
+
+img.img2{background-color: red;
+            display: inline-block;
+            margin: 0 5%;
+            position: relative;
+            width: 40%;
+            top: 0;
+            bottom: 0;
+            }     
+p.esv{
+        border-left: 5px solid orangered ;
+        
+        height: 25%;
+        position: absolute;
+        font-size: 2vw;padding-left: 2vw;
+    width: 45%;
+    right: 0;
+    margin-top: 0;;
+    top: 0;
+    padding-right: 5vw;
+    float: right;}
+
+div.esp{display: block;
+        position: relative;
+        padding: 0%;
+        margin: 20px 0 20px 0;}    
+h2{text-align: center;font-size: 3vw;margin: 0;padding: 10px} 
+table{display: inline-block;}
+table tr.l1{width: 5px;height: 50px}    
+table tr th.img img{width: 40vw;margin-left: 2vw;height: 23vw;}
+table tr div{background-color: orangered;width: 1vw;height: 7vw;max-height: 100px;max-width:10px ;}
+table a {display: block;text-align: center;font-size: 1.7vw;}
+.frame{border: 3px solid white;
+        width: 70vw;height: 30vw;
+        box-shadow:  2px 2px 10px 1px rgb(0, 0, 0);
+        margin:5vw 15vw 5vw 15vw;
+        position: relative;
+    background-color: white;
+    }
+.frame:hover{border: 3px solid rgb(82, 147, 253) ;}
+.frame h2{top:10%;position: relative;}
+.frame img.profil{width: 10vw;left: 5%;top: 30%;}
+.frame p.esv{top:30%;right:15%}
+table a :hover{border: 3px solid rgb(82, 147, 253) ;}
+
+iframe{height: 40vw;
+        width: 100%;}
+
+
+@media (max-width:720px) {
+    table{display: block;
+        position: relative;
+        float: none;
+        width: 100%;
+        }
+    div.portf{height:110vw;}
+    table tr th.img img {width:85vw ;height: 50vw;}
+}
