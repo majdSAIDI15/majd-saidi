@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Pop-up Vidéo Projet</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .popup-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .popup {
+      background: #ffffff;
+      color: #000;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+      max-width: 600px;
+      width: 90%;
+      transform: scale(0.8);
+      transition: transform 0.4s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .popup-overlay.active .popup {
+      transform: scale(1);
+    }
+
+    .popup video {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .popup-content {
+      padding: 25px;
+    }
+
+    .popup-content h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+    .popup-content p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .popup button {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 20px;
+      align-self: center;
+    }
+
+    .popup button:hover {
+      background: #333;
+    }
+
+    .open-btn {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+  </style>
+</head>
+<body>
+
+  <button class="open-btn" onclick="openPopup()">Découvrir le Projet</button>
+
+  <div class="popup-overlay" id="popup">
+    <div class="popup">
+      <video autoplay muted loop>
+        <source src="WhatsApp Vidéo 2024-09-23 à 17.56.41_24c6dac6.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la lecture vidéo.
+      </video>
+      <div class="popup-content">
+        <h2>Projet Glove Voice</h2>
+        <p>
+          Une innovation qui transforme les gestes en parole grâce à un gant intelligent embarquant des capteurs flexibles et un module audio. Ce projet utilise des technologies embarquées et de l'intelligence artificielle pour améliorer l'accessibilité des personnes atteintes de troubles de la parole.
+        </p>
+        <button onclick="closePopup()">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openPopup() {
+      document.getElementById('popup').classList.add('active');
+    }
+
+    function closePopup() {
+      document.getElementById('popup').classList.remove('active');
+    }
+  </script>
+
+</body>
+</html>
