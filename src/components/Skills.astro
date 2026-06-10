@@ -1,0 +1,113 @@
+---
+import { skillGroups, learning, softSkills } from '../data/skills';
+import SectionHeading from './SectionHeading.astro';
+
+// Full class strings so Tailwind's content scanner keeps them (no dynamic concatenation).
+const tagClasses: Record<string, string> = {
+  blue: 'bg-blue-50 text-blue-700',
+  indigo: 'bg-indigo-50 text-indigo-700',
+  purple: 'bg-purple-50 text-purple-700',
+  gray: 'bg-gray-50 text-gray-700',
+  red: 'bg-red-50 text-red-700',
+  yellow: 'bg-yellow-50 text-yellow-700',
+  green: 'bg-green-50 text-green-700',
+  orange: 'bg-orange-50 text-orange-700',
+};
+const iconClasses: Record<string, string> = {
+  blue: 'text-blue-500',
+  indigo: 'text-indigo-400',
+  purple: 'text-purple-400',
+  gray: 'text-gray-400',
+  red: 'text-red-400',
+  yellow: 'text-yellow-400',
+  green: 'text-green-500',
+  orange: 'text-orange-500',
+};
+const softColors: Record<string, string> = {
+  blue: 'bg-blue-100 text-blue-500',
+  green: 'bg-green-100 text-green-500',
+  purple: 'bg-purple-100 text-purple-500',
+  orange: 'bg-orange-100 text-orange-500',
+};
+---
+
+<section id="skills" class="relative overflow-hidden py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      title="Mes Compétences"
+      subtitle="Expertise technique et compétences transversales validées par des projets concrets"
+    />
+
+    <!-- Technical skills -->
+    <div class="mb-16">
+      <h3 class="mb-6 border-b pb-2 text-center text-2xl font-semibold text-gray-800">
+        <i class="fas fa-code mr-2 text-primary"></i> Compétences Techniques
+      </h3>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        {
+          skillGroups.map((group) => (
+            <div class="blue-border rounded-xl glass p-6 transition-all hover:bg-white/90">
+              <div class="mb-4 flex items-center">
+                <i class={`${group.icon} ${iconClasses[group.color]} mr-3 text-2xl`} />
+                <h4 class="text-xl font-semibold text-gray-800">{group.title}</h4>
+              </div>
+
+              {group.subgroups.map((sub) => (
+                <div class="mb-5">
+                  <div class="mb-2 flex items-center">
+                    <i class={`${sub.icon} ${iconClasses[sub.color]} mr-2`} />
+                    <span class="font-medium">{sub.title}</span>
+                  </div>
+                  <div class="flex flex-wrap gap-2 pl-6">
+                    {sub.tags.map((tag) => (
+                      <span class={`flex items-center rounded px-2 py-1 text-xs ${tagClasses[sub.color]}`}>
+                        <i class={`${tag.icon} mr-1`} /> {tag.label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Currently learning -->
+    <div class="blue-border mx-auto mb-16 max-w-3xl rounded-xl glass p-6">
+      <h3 class="mb-3 flex items-center justify-center text-lg font-semibold text-gray-800">
+        <i class="fas fa-seedling mr-2 text-yellow-500"></i> Actuellement en apprentissage
+      </h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        {
+          learning.map((item) => (
+            <span class="flex items-center rounded-full bg-yellow-50 px-3 py-1 text-sm text-yellow-800">
+              <i class={`${item.icon} mr-1`} /> {item.label}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Soft skills -->
+    <div>
+      <h3 class="mb-6 border-b pb-2 text-center text-2xl font-semibold text-gray-800">
+        <i class="fas fa-users mr-2 text-primary"></i> Soft Skills Professionnelles
+      </h3>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {
+          softSkills.map((skill) => (
+            <div class="blue-border rounded-xl glass p-6 text-center transition-all hover:bg-white/90">
+              <div class={`mb-3 inline-block rounded-full p-3 ${softColors[skill.color]}`}>
+                <i class={`${skill.icon} text-xl`} />
+              </div>
+              <h4 class="mb-2 text-lg font-semibold text-gray-800">{skill.title}</h4>
+              <p class="text-sm text-gray-600">{skill.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

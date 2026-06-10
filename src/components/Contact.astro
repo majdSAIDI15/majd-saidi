@@ -1,0 +1,105 @@
+---
+import { site } from '../data/site';
+import SectionHeading from './SectionHeading.astro';
+
+const infos = [
+  { icon: 'fas fa-envelope', label: 'Email', value: site.email, href: `mailto:${site.email}` },
+  { icon: 'fas fa-phone-alt', label: 'Phone', value: site.phoneDisplay, href: `tel:+${site.phoneIntl}` },
+  { icon: 'fas fa-map-marker-alt', label: 'Location', value: site.location, href: undefined },
+];
+
+const socials = [
+  { href: site.social.linkedin, icon: 'fab fa-linkedin-in', label: 'LinkedIn' },
+  { href: site.social.instagram, icon: 'fab fa-instagram', label: 'Instagram' },
+  { href: site.social.github, icon: 'fab fa-github', label: 'GitHub' },
+  { href: `mailto:${site.email}`, icon: 'fa fa-envelope', label: 'Email' },
+].filter((s) => s.href);
+---
+
+<section id="contact" class="glass relative overflow-hidden py-16">
+  <div class="grid-overlay"></div>
+  <div class="absolute right-0 top-0 h-64 w-64 rounded-full bg-primary opacity-5 blur-3xl"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading title="Get In Touch" />
+
+    <div class="flex flex-col gap-12 lg:flex-row">
+      <div class="lg:w-1/2">
+        <h3 class="mb-6 text-2xl font-semibold text-gray-800">Contact Information</h3>
+        <div class="space-y-6">
+          {
+            infos.map((info) => {
+              const Tag = info.href ? 'a' : 'div';
+              return (
+                <Tag
+                  href={info.href}
+                  class="card-hover blue-border flex items-start rounded-xl glass p-4 hover:bg-white/90"
+                >
+                  <div class="mr-4 rounded-full border border-primary/20 bg-blue-100 p-3">
+                    <i class={`${info.icon} text-primary`} />
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">{info.label}</h4>
+                    <p class="text-gray-600">{info.value}</p>
+                  </div>
+                </Tag>
+              );
+            })
+          }
+        </div>
+
+        <div class="mt-10">
+          <h4 class="mb-4 font-medium text-gray-800">Connect With Me</h4>
+          <div class="flex space-x-4">
+            {
+              socials.map((s) => (
+                <a
+                  href={s.href}
+                  aria-label={s.label}
+                  target={s.href.startsWith('mailto:') ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  class="blue-border rounded-full glass p-3 text-primary transition-all duration-300 hover:scale-110 hover:bg-blue-100"
+                >
+                  <i class={s.icon} />
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2">
+        <form
+          id="contact-form"
+          data-phone={site.phoneIntl}
+          class="blue-border space-y-6 rounded-xl glass p-8"
+        >
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div>
+              <label for="name" class="mb-1 block text-sm font-medium text-gray-700">Name</label>
+              <input id="name" name="name" type="text" required class="w-full rounded-lg border border-gray-200 bg-white/80 px-4 py-2 text-gray-800 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary" />
+            </div>
+            <div>
+              <label for="email" class="mb-1 block text-sm font-medium text-gray-700">Email</label>
+              <input id="email" name="email" type="email" required class="w-full rounded-lg border border-gray-200 bg-white/80 px-4 py-2 text-gray-800 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary" />
+            </div>
+          </div>
+          <div>
+            <label for="subject" class="mb-1 block text-sm font-medium text-gray-700">Subject</label>
+            <input id="subject" name="subject" type="text" class="w-full rounded-lg border border-gray-200 bg-white/80 px-4 py-2 text-gray-800 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary" />
+          </div>
+          <div>
+            <label for="message" class="mb-1 block text-sm font-medium text-gray-700">Message</label>
+            <textarea id="message" name="message" rows="5" required class="w-full rounded-lg border border-gray-200 bg-white/80 px-4 py-2 text-gray-800 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary"></textarea>
+          </div>
+          <button
+            type="submit"
+            class="futuristic-box w-full rounded-lg bg-gradient-to-r from-primary to-secondary px-6 py-3 font-medium text-white shadow transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

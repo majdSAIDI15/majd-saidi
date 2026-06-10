@@ -1,0 +1,73 @@
+---
+import { site } from '../data/site';
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="about" class="glass relative overflow-hidden py-16">
+  <div class="grid-overlay"></div>
+  <div class="absolute right-0 top-0 h-64 w-64 rounded-full bg-primary opacity-5 blur-3xl"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading title="About Me" />
+
+    <div class="flex flex-col items-center md:flex-row">
+      <div class="mb-8 flex justify-center md:mb-0 md:w-1/3">
+        <div class="relative h-64 w-64">
+          <div class="absolute inset-0 rotate-6 rounded-lg bg-gradient-to-br from-primary to-secondary shadow-lg"></div>
+          <img
+            src={site.avatar}
+            alt={`${site.name} working`}
+            width="256"
+            height="256"
+            class="rotate-3d relative h-full w-full rounded-lg border-4 border-white object-cover shadow-lg"
+          />
+        </div>
+      </div>
+
+      <div class="md:w-2/3 md:pl-12">
+        <span class="mb-4 inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-primary">
+          <span class="mr-2 h-2 w-2 animate-pulse rounded-full bg-primary"></span>
+          {site.openToWork}
+        </span>
+        <h3 class="mb-4 text-2xl font-semibold text-gray-800">Who I Am</h3>
+        <p class="mb-6 text-gray-600">
+          I'm an engineering student at <strong>ENSAM Rabat</strong> (Data Science & AI) with a
+          <strong> dual expertise</strong>: Artificial Intelligence — LLMs, RAG, Voice AI and Deep Learning — and
+          <strong> offensive cybersecurity</strong> (web/network pentest, reverse engineering, securing production
+          APIs). As an active freelancer at <strong>PillQare</strong>, I've shipped 3 systems to production.
+        </p>
+
+        <div class="mb-6 text-gray-600">
+          <h4 class="mb-2 font-semibold text-gray-700">What I Do</h4>
+          <ul class="list-disc space-y-1 pl-5">
+            <li>Build <strong>AI products</strong> — voice agents, RAG chatbots and computer-vision models — with Python, TensorFlow/PyTorch and the LLM stack.</li>
+            <li>Engineer <strong>embedded & IoT systems</strong> on ESP32 with ESP-IDF, FreeRTOS and secure TLS firmware.</li>
+            <li>Apply <strong>offensive security</strong>: pentesting, exploitation, and hardening APIs (JWT, HMAC, RBAC, Zero Trust).</li>
+          </ul>
+        </div>
+
+        <p class="mb-8 text-gray-600">
+          I'm currently looking for an <strong>end-of-year project internship (PFA)</strong> where I can build at the
+          intersection of AI, embedded systems and security.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a
+            href={site.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="futuristic-box flex items-center rounded-lg bg-gradient-to-r from-primary to-secondary px-6 py-2 font-medium text-white shadow transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          >
+            <i class="fas fa-download mr-2"></i> Download CV
+          </a>
+          <a
+            href="#contact"
+            class="blue-border flex items-center rounded-lg border border-primary px-6 py-2 font-medium text-primary transition-all duration-300 hover:scale-105 hover:bg-blue-50"
+          >
+            <i class="fas fa-paper-plane mr-2"></i> Hire Me
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

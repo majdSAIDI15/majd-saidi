@@ -1,0 +1,99 @@
+---
+import { projects } from '../data/projects';
+import SectionHeading from './SectionHeading.astro';
+
+// Literal class strings so Tailwind keeps them (no dynamic concatenation).
+const categoryBadge: Record<string, string> = {
+  AI: 'bg-blue-100 text-blue-700',
+  'Voice AI': 'bg-indigo-100 text-indigo-700',
+  'Full-Stack': 'bg-sky-100 text-sky-700',
+  IoT: 'bg-orange-100 text-orange-700',
+  'Computer Vision': 'bg-teal-100 text-teal-700',
+  'Deep Learning': 'bg-red-100 text-red-700',
+  Cybersecurity: 'bg-gray-200 text-gray-800',
+  Automation: 'bg-green-100 text-green-700',
+};
+---
+
+<section id="projects" class="relative overflow-hidden py-16">
+  <div class="grid-overlay"></div>
+  <div class="absolute right-1/4 top-1/4 h-64 w-64 rounded-full bg-primary opacity-5 blur-3xl"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading title="My Projects" />
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        projects.map((project) => (
+          <article class="card-hover blue-border group overflow-hidden rounded-xl glass hover:bg-white/90">
+            <div class="relative h-48 overflow-hidden">
+              {project.media.type === 'video' && (
+                <video autoplay muted loop playsinline class="project-image h-full w-full object-cover">
+                  <source src={project.media.src} type="video/mp4" />
+                </video>
+              )}
+              {project.media.type === 'image' && (
+                <img
+                  src={project.media.src}
+                  alt={project.media.alt}
+                  width="400"
+                  height="192"
+                  loading="lazy"
+                  class="project-image h-full w-full object-cover"
+                />
+              )}
+              {project.media.type === 'icon' && (
+                <div class="project-image flex h-full w-full items-center justify-center bg-gradient-to-br from-primary to-secondary">
+                  <i class={`${project.media.icon} text-6xl text-white/90`} />
+                </div>
+              )}
+              <div class="absolute inset-0 flex items-end bg-gradient-to-t from-black/80 to-transparent p-6 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                <div>
+                  <h3 class="mb-1 text-xl font-bold text-white">{project.title}</h3>
+                  <p class="text-sm text-gray-300">{project.summary}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="mb-2 flex items-start justify-between">
+                <h3 class="text-xl font-bold text-gray-800">{project.title}</h3>
+                <span class={`rounded-full px-2 py-1 text-xs ${categoryBadge[project.category] ?? 'bg-blue-100 text-primary'}`}>
+                  {project.category}
+                </span>
+              </div>
+              <p class="mb-4 text-gray-600">{project.description}</p>
+
+              {project.highlight && (
+                <p class="mb-4 rounded-lg bg-blue-50 px-3 py-2 text-sm font-medium text-primary">{project.highlight}</p>
+              )}
+
+              <div class="mb-4 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span class="rounded bg-blue-50 px-2 py-1 text-xs text-gray-700">{tag}</span>
+                ))}
+              </div>
+
+              {(project.code || project.demo) && (
+                <div class="flex space-x-3">
+                  {project.code && (
+                    <a href={project.code} target="_blank" rel="noopener noreferrer" class="group/link flex items-center text-primary transition hover:text-gray-800">
+                      <i class="fab fa-github mr-1"></i>
+                      <span class="group-hover/link:underline">Code</span>
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" class="group/link flex items-center text-primary transition hover:text-gray-800">
+                      <i class="fas fa-external-link-alt mr-1"></i>
+                      <span class="group-hover/link:underline">Demo</span>
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

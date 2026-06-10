@@ -1,0 +1,74 @@
+---
+import { site } from '../data/site';
+
+const socials = [
+  { href: site.social.github, icon: 'fab fa-github', label: 'GitHub' },
+  { href: site.social.linkedin, icon: 'fab fa-linkedin-in', label: 'LinkedIn' },
+  { href: site.social.instagram, icon: 'fab fa-instagram', label: 'Instagram' },
+  { href: `mailto:${site.email}`, icon: 'fa fa-envelope', label: 'Email' },
+].filter((s) => s.href);
+---
+
+<section id="home" class="relative overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36">
+  <div class="grid-overlay"></div>
+  <canvas id="matrix-rain" class="matrix-rain"></canvas>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center md:flex-row">
+      <div class="mb-10 md:mb-0 md:w-1/2">
+        <h1 class="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
+          Hi, I'm <span class="text-gradient">{site.name}</span>
+        </h1>
+        <h2 class="mb-6 min-h-[2rem] font-tech text-xl font-semibold text-gray-800 md:text-2xl">
+          <span id="role" class="role-caret" data-roles={JSON.stringify(site.roles)}>{site.roles[0]}</span>
+        </h2>
+        <p class="mb-8 max-w-lg text-lg text-gray-600">{site.intro}</p>
+
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="#contact"
+            class="futuristic-box blue-shadow flex items-center rounded-lg bg-gradient-to-r from-primary to-secondary px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          >
+            <i class="fas fa-paper-plane mr-2"></i> Contact Me
+          </a>
+          <a
+            href="#projects"
+            class="blue-border flex items-center rounded-lg border border-primary px-6 py-3 font-medium text-primary transition-all duration-300 hover:scale-105 hover:bg-blue-50"
+          >
+            <i class="fas fa-code mr-2"></i> View Work
+          </a>
+        </div>
+
+        <div class="mt-8 flex space-x-4">
+          {
+            socials.map((s) => (
+              <a
+                href={s.href}
+                aria-label={s.label}
+                target={s.href.startsWith('mailto:') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+                class="text-gray-600 transition-all duration-300 hover:-translate-y-1 hover:text-primary"
+              >
+                <i class={`${s.icon} text-xl`} />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="relative flex justify-center md:w-1/2">
+        <div class="relative h-64 w-64 md:h-80 md:w-80">
+          <div class="absolute inset-0 animate-pulse rounded-full bg-primary opacity-20 blur-xl"></div>
+          <div class="absolute inset-0 rounded-full bg-secondary opacity-10 blur-xl"></div>
+          <img
+            src={site.avatar}
+            alt={`Portrait of ${site.name}`}
+            width="320"
+            height="320"
+            class="rotate-3d animate-floating relative h-full w-full rounded-full border-4 border-white object-cover shadow-xl"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import { languages, activities } from '../data/experience';
+---
+
+<section class="relative overflow-hidden py-16">
+  <div class="grid-overlay"></div>
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+      <!-- Languages -->
+      <div>
+        <h3 class="mb-8 flex items-center text-2xl font-bold text-gray-800">
+          <i class="fas fa-language mr-3 text-primary"></i> Languages
+        </h3>
+        <div class="space-y-4">
+          {
+            languages.map((lang) => (
+              <div class="blue-border flex items-center justify-between rounded-xl glass p-4">
+                <span class="font-medium text-gray-800">{lang.name}</span>
+                <span class="text-sm text-primary">{lang.level}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Activities & Engagements -->
+      <div>
+        <h3 class="mb-8 flex items-center text-2xl font-bold text-gray-800">
+          <i class="fas fa-people-group mr-3 text-primary"></i> Activities & Leadership
+        </h3>
+        <div class="space-y-4">
+          {
+            activities.map((act) => (
+              <div class="card-hover blue-border flex items-start rounded-xl glass p-4 hover:bg-white/90">
+                <div class="mr-4 rounded-full border border-primary/20 bg-blue-100 p-3">
+                  <i class={`${act.icon} text-primary`} />
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">{act.role}</h4>
+                  <p class="text-sm text-gray-600">{act.org}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

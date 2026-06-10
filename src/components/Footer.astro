@@ -1,0 +1,53 @@
+---
+import { site, navItems } from '../data/site';
+
+const socials = [
+  { href: site.social.linkedin, icon: 'fab fa-linkedin-in', label: 'LinkedIn' },
+  { href: site.social.instagram, icon: 'fab fa-instagram', label: 'Instagram' },
+  { href: site.social.github, icon: 'fab fa-github', label: 'GitHub' },
+  { href: `mailto:${site.email}`, icon: 'fa fa-envelope', label: 'Email' },
+].filter((s) => s.href);
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-gray-200 bg-white/90 py-12 text-gray-800">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center justify-between md:flex-row">
+      <div class="mb-6 text-center md:mb-0 md:text-left">
+        <h3 class="text-2xl font-bold text-gradient animate-flicker">{site.name.toUpperCase()}</h3>
+        <p class="mt-2 text-gray-600">Building intelligent solutions for the future.</p>
+      </div>
+      <nav class="flex flex-wrap justify-center gap-6">
+        {
+          navItems
+            .filter((i) => i.href !== '#certifications')
+            .map((item) => (
+              <a href={item.href} class="text-gray-600 transition-all duration-300 hover:text-primary">
+                {item.label}
+              </a>
+            ))
+        }
+      </nav>
+    </div>
+
+    <div class="mt-8 flex flex-col items-center justify-between border-t border-gray-200 pt-8 md:flex-row">
+      <p class="mb-4 text-sm text-gray-600 md:mb-0">© {year} {site.name}. All rights reserved.</p>
+      <div class="flex space-x-4">
+        {
+          socials.map((s) => (
+            <a
+              href={s.href}
+              aria-label={s.label}
+              target={s.href.startsWith('mailto:') ? undefined : '_blank'}
+              rel="noopener noreferrer"
+              class="text-gray-600 transition-all duration-300 hover:scale-110 hover:text-primary"
+            >
+              <i class={s.icon} />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>

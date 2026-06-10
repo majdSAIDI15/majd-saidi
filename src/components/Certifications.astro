@@ -1,0 +1,60 @@
+---
+import { certifications } from '../data/certifications';
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="certifications" class="relative overflow-hidden py-16">
+  <div class="grid-overlay"></div>
+  <div class="absolute right-0 top-0 h-64 w-64 rounded-full bg-primary opacity-5 blur-3xl"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading title="Certifications" />
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        certifications.map((cert) => (
+          <div class="certification-card">
+            <div class="certification-inner blue-border h-full rounded-2xl bg-white">
+              <!-- Front -->
+              <div class="certification-front flex h-full flex-col rounded-2xl p-6">
+                <div class="mb-4 flex justify-center">
+                  {cert.badge ? (
+                    <img src={cert.badge} alt={`${cert.title} badge`} width="128" height="128" class="h-32 w-32 object-contain" />
+                  ) : (
+                    <div class="flex h-32 w-32 items-center justify-center rounded-full bg-blue-50">
+                      <i class={`${cert.icon ?? 'fas fa-certificate'} text-5xl text-primary`} />
+                    </div>
+                  )}
+                </div>
+                <h3 class="mb-2 text-xl font-bold text-gray-800">{cert.title}</h3>
+                <p class="mb-4 text-primary">{cert.issuer}</p>
+                <div class="mt-auto">
+                  <span class="inline-block rounded-full bg-blue-100 px-2 py-1 text-xs text-primary">{cert.date}</span>
+                </div>
+              </div>
+
+              <!-- Back -->
+              <div class="certification-back flex flex-col items-center justify-center rounded-2xl bg-white/95 p-6 text-center">
+                <i class="fas fa-award mb-4 text-4xl text-primary"></i>
+                <h3 class="mb-2 text-lg font-semibold text-gray-800">{cert.title}</h3>
+                {cert.credentialUrl ? (
+                  <a
+                    href={cert.credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group mt-2 inline-flex items-center text-primary transition hover:text-gray-800"
+                  >
+                    <span class="group-hover:underline">View Credential</span>
+                    <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                  </a>
+                ) : (
+                  <p class="mt-2 text-sm text-gray-500">{cert.issuer}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${site.name} — ${site.role}`,
+  description = site.intro,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/jpeg" href={site.avatar} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body class="grid-bg">
+    <!-- Scroll progress + custom cursor -->
+    <div class="scroll-progress"></div>
+    <div id="cursor" class="cursor-effect" aria-hidden="true"></div>
+
+    <slot />
+
+    <!-- Back to top -->
+    <button
+      id="back-to-top"
+      aria-label="Back to top"
+      class="invisible fixed bottom-8 right-8 z-50 rounded-full bg-gradient-to-br from-primary to-secondary p-3 text-white opacity-0 shadow-lg transition-all duration-300 hover:scale-110"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Decorative particle network -->
+    <canvas id="particles" class="pointer-events-none fixed inset-0 -z-10 h-full w-full"></canvas>
+
+    <script>
+      import '../scripts/main';
+    </script>
+  </body>
+</html>
