@@ -33,6 +33,6 @@ export const navItems: NavItem[] = [
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
-  { href: '#certifications', label: 'Certifications' },
+  // { href: '#certifications', label: 'Certifications' }, // section temporarily disabled
   { href: '#contact', label: 'Contact' },
 ];

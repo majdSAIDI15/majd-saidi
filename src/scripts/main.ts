@@ -7,6 +7,7 @@ import { initParticles } from './particles';
 import { initMatrixRain } from './matrix';
 import { initTilt, initConfetti } from './effects';
 import { initContactForm } from './contactForm';
+import { initProjectModals } from './projectModal';
 
 function init(): void {
   // Always-on, lightweight behaviour.
@@ -14,6 +15,7 @@ function init(): void {
   initTypewriter();
   initScrollUI();
   initContactForm();
+  initProjectModals();
 
   // Pointer-driven flourishes only make sense with a fine pointer.
   const finePointer = window.matchMedia('(pointer: fine)').matches;
