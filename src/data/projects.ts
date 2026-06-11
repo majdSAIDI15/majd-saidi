@@ -86,6 +86,7 @@ export const projects: Project[] = [
       'A multi-tenant CRM SaaS: Django 5 + DRF backend with 4-role RBAC, three Next.js 15 portals and a React Native mobile app. Secured with JWT + refresh tokens and 256-bit HMAC API keys (constant-time validation), CI/CD on Koyeb and Vercel.',
     media: { type: 'image', src: '/images/projects/pillqare-pro/landing.png', alt: 'PillQare Pro landing page' },
     tags: ['Django 5', 'DRF', 'Next.js 15', 'React Native', 'JWT', 'RBAC'],
+    code: 'https://github.com/majdSAIDI15/PIILZ-SAAS',
     details: {
       tagline: 'The multi-tenant SaaS that powers the connected pill dispensers.',
       context: 'Freelance · PillQare · Full-Stack & Security',
@@ -125,6 +126,7 @@ export const projects: Project[] = [
       'C++ firmware on an ESP32-P4 (RISC-V 400 MHz) running FreeRTOS with 7 tasks in 265 KB RAM, an 800×800 @ 60 fps LVGL 9 touch UI, a motorized 29-compartment carousel, TLS/HTTPS over mbedTLS and an offline mode (SD cache). 10 production bugs resolved.',
     media: { type: 'image', src: '/images/projects/pill-dispenser/device.png', alt: 'The connected pill dispenser device' },
     tags: ['ESP32-P4', 'ESP-IDF 5.4', 'FreeRTOS', 'LVGL 9', 'mbedTLS', 'C++'],
+    code: 'https://github.com/majdSAIDI15/pillqv2',
     details: {
       tagline: 'Embedded firmware for a 29-slot connected pill dispenser.',
       context: 'Freelance · PillQare · Embedded / IoT',
@@ -199,6 +201,7 @@ export const projects: Project[] = [
       'A full OCR pipeline for IDs, passports, certificates and diplomas with structured entity extraction (NLP), document-integrity validation and forgery-vector analysis.',
     media: { type: 'image', src: '/images/projects/smarthdoc/home.png', alt: 'SmartHDoc home — template families' },
     tags: ['Tesseract', 'OpenCV', 'spaCy', 'Transformers', 'FastAPI'],
+    code: 'https://github.com/majdSAIDI15/PFA_smath_align_extract',
     details: {
       tagline: 'Align a photographed document, then extract its fields with zonal OCR.',
       context: 'PFA · ENSAM (supervised by Pr. CHEFIRA) · Computer Vision',
@@ -235,8 +238,9 @@ export const projects: Project[] = [
     summary: 'Bilingual e-commerce assistant (FR/AR)',
     description:
       'A conversational e-commerce assistant in French and Arabic built on a LangChain → FAISS → GPT-4 retrieval-augmented pipeline served via FastAPI.',
-    media: { type: 'icon', icon: 'fas fa-comments' },
+    media: { type: 'image', src: '/images/projects/shopmaroc/assistant.jpg', alt: 'ShopMaroc RAG assistant chat interface' },
     tags: ['LangChain', 'GPT-4', 'FAISS', 'FastAPI', 'Python'],
+    code: 'https://github.com/majdSAIDI15/chatbot-rag-shopmaroc',
     details: {
       tagline: 'A bilingual shopping assistant grounded in the product catalog.',
       context: 'Academic project · ENSAM · AI',
@@ -252,6 +256,7 @@ export const projects: Project[] = [
         { group: 'AI', items: ['LangChain', 'GPT-4', 'FAISS'] },
         { group: 'Backend', items: ['FastAPI', 'Python'] },
       ],
+      gallery: [{ src: '/images/projects/shopmaroc/assistant.jpg', caption: 'ShopMaroc assistant — bilingual product Q&A' }],
     },
   },
   {
@@ -263,6 +268,7 @@ export const projects: Project[] = [
       'Two computer-vision models: a 5-class waste classifier (ResNet50 transfer learning, > 93% accuracy) and an image-based geographic locator (EfficientNetB3).',
     media: { type: 'image', src: '/images/projects/vision-models/vgg16.webp', alt: 'VGG-16 convolutional network architecture' },
     tags: ['TensorFlow', 'Keras', 'PyTorch', 'ResNet50', 'EfficientNetB3'],
+    code: 'https://github.com/majdSAIDI15/GeographyGuesser',
     details: {
       tagline: 'Two applied computer-vision models.',
       context: 'Academic projects · ENSAM · Deep Learning',
@@ -278,6 +284,9 @@ export const projects: Project[] = [
         { group: 'Models', items: ['ResNet50', 'EfficientNetB3', 'VGG16', 'OpenCV'] },
       ],
       gallery: [{ src: '/images/projects/vision-models/vgg16.webp', caption: 'VGG-16 convolutional architecture' }],
+      links: [
+        { label: 'TrashNet classifier — repo', href: 'https://github.com/majdSAIDI15/trashnet-classifier', icon: 'fab fa-github' },
+      ],
     },
   },
   {
